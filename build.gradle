@@ -1,4 +1,8 @@
 buildscript {
+    dependencies {
+
+        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.40.1'
+    }
     ext {
         compose_version = '1.0.1'
     }
