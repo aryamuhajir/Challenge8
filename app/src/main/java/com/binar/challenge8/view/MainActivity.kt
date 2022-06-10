@@ -92,7 +92,7 @@ fun Greeting(hasil: GetAllUserResponse, userViewModel: ViewModelUser) {
                 if (hasil.id.isBlank()){
                     Toast.makeText(context, "USERNAME ATAU PASSWORD SALAH", Toast.LENGTH_LONG).show()
                 }else{
-                    Toast.makeText(context, "Berhasil login! ${hasil.id}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, "Berhasil login!", Toast.LENGTH_LONG).show()
                     context.startActivity(Intent(context, HomeActivity::class.java))
                     userManager.setStatus("yes")
                     userManager.login(hasil.username, hasil.password, hasil.email, hasil.id)

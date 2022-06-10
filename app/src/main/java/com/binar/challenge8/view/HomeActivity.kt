@@ -12,10 +12,7 @@ import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -85,18 +82,12 @@ class HomeActivity : ComponentActivity() {
                             Image(painter = painterResource(id = R.drawable.ic_baseline_star_24), contentDescription = "gambar", modifier = Modifier
                                 .width(60.dp)
                                 .height(60.dp)
-                                .clickable {
-                                    context.startActivity(
-                                        Intent(
-                                            context,
-                                            FavoriteActivity::class.java
-                                        )
-                                    )
-                                })
+                                .clickable {})
                             Image(painter = painterResource(id = R.drawable.ic_baseline_account_circle_24), contentDescription = "gambar", modifier = Modifier
                                 .width(50.dp)
                                 .height(50.dp)
                                 .clickable {
+
 
                                     scope.launch {
                                         userManager.logout()
@@ -167,4 +158,3 @@ fun Greeting4(film: Result) {
         
     }
 }
-

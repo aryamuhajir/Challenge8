@@ -36,7 +36,8 @@ class RegisterActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    val userViewModel : ViewModelUser = viewModel(modelClass = ViewModelUser::class.java)
+                    val userViewModel: ViewModelUser =
+                        viewModel(modelClass = ViewModelUser::class.java)
 
                     Greeting3(userViewModel)
                 }
@@ -54,42 +55,67 @@ fun Greeting3(user: ViewModelUser) {
     val context = LocalContext.current
 
 
-    Column(modifier = Modifier
-        .fillMaxSize()
-        .padding(10.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(10.dp), horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         Text(text = "Register", fontSize = 30.sp, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(10.dp))
-        Image(modifier = Modifier.width(120.dp).height(120.dp),painter = painterResource(id = R.drawable.ic_baseline_airplay_24 ), contentDescription = "gambmar")
+        Image(
+            modifier = Modifier
+                .width(120.dp)
+                .height(120.dp),
+            painter = painterResource(id = R.drawable.ic_baseline_airplay_24),
+            contentDescription = "gambmar"
+        )
         Spacer(modifier = Modifier.height(40.dp))
-        OutlinedTextField(value = username, onValueChange = { username = it },label = { Text("Masukkan Username")})
+        OutlinedTextField(
+            value = username,
+            onValueChange = { username = it },
+            label = { Text("Masukkan Username") })
         Spacer(modifier = Modifier.height(20.dp))
-        OutlinedTextField(value = email, onValueChange = { email = it },label = { Text("Masukkan Email")})
+        OutlinedTextField(
+            value = email,
+            onValueChange = { email = it },
+            label = { Text("Masukkan Email") })
         Spacer(modifier = Modifier.height(20.dp))
-        OutlinedTextField(visualTransformation = PasswordVisualTransformation() ,value = password, onValueChange = { password = it },label = { Text("Masukkan Password")})
+        OutlinedTextField(
+            visualTransformation = PasswordVisualTransformation(),
+            value = password,
+            onValueChange = { password = it },
+            label = { Text("Masukkan Password") })
         Spacer(modifier = Modifier.height(20.dp))
-        OutlinedTextField(visualTransformation = PasswordVisualTransformation() ,value = konfirmasi, onValueChange = { konfirmasi = it },label = { Text("Konfirmasi Password")})
+        OutlinedTextField(
+            visualTransformation = PasswordVisualTransformation(),
+            value = konfirmasi,
+            onValueChange = { konfirmasi = it },
+            label = { Text("Konfirmasi Password") })
         Spacer(modifier = Modifier.height(120.dp))
         Button(modifier = Modifier
             .fillMaxWidth()
-            .height(80.dp), shape = RoundedCornerShape(10.dp),onClick = {
-                if (username.isNotBlank() && password.isNotBlank() && email.isNotBlank() && konfirmasi.isNotBlank()){
-                    if (password == konfirmasi){
-                        user.registerLive(email, password, username)
-                        Toast.makeText(context, "Berhasil daftar", Toast.LENGTH_LONG).show()
+            .height(80.dp), shape = RoundedCornerShape(10.dp), onClick = {
+            if (username.isNotBlank() && password.isNotBlank()
+                && email.isNotBlank() && konfirmasi.isNotBlank()) {
+                if (password == konfirmasi) {
+                    user.registerLive(email, password, username)
+                    Toast.makeText(context, "Berhasil daftar", Toast.LENGTH_LONG).show()
 
-                    }else{
-                        Toast.makeText(context, "Konfirmasi password tidak sesuai", Toast.LENGTH_LONG).show()
-
-                    }
-                }else{
-                    Toast.makeText(context, "Isi semua", Toast.LENGTH_LONG).show()
+                } else {
+                    Toast.makeText(
+                        context,
+                        "Konfirmasi password tidak sesuai",
+                        Toast.LENGTH_LONG
+                    ).show()
 
                 }
+            } else {
+                Toast.makeText(context, "Isi semua", Toast.LENGTH_LONG).show()
+
+            }
         }) {
             Text(text = "Register", fontSize = 25.sp)
         }
-
-
 
 
     }
